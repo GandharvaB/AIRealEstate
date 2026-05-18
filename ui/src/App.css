@@ -1,0 +1,5 @@
+/* App-level layout & overrides */
+
+.app-container {
+  padding-bottom: var(--space-3xl);
+}

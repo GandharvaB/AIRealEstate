@@ -1,0 +1,116 @@
+.log-stream-container {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  position: relative;
+}
+
+.log-stream-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.log-stream-empty-icon {
+  opacity: 0.4;
+}
+
+.log-entry {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  line-height: 1.5;
+}
+
+.log-time {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  min-width: 70px;
+}
+
+.log-agent {
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.log-message {
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.log-stream-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.log-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.log-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.log-scroll-btn {
+  position: sticky;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin: var(--space-sm) auto 0;
+  padding: 4px 16px;
+  background: var(--gradient-button);
+  border: none;
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+.log-stream-minimized {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+}
+
+.log-stream-dot-indicator {
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .log-entry {
+    flex-wrap: wrap;
+  }
+  .log-agent {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,102 @@
+---
+research_properties_data:
+  description: Search for available real estate properties near {target_location} within
+    a {search_radius_miles} mile radius using multiple real estate APIs. For US locations,
+    use the real_estate_api_tool to query Zillow and ATTOM Data APIs. For Indian locations,
+    use the ninetynine_acres_india_tool to search 99acres.com for plots, flats, houses,
+    and commercial properties with price trends in INR. Apply all specified filters
+    including price range ({min_price} to {max_price}), zoning type ({zoning_type}),
+    and minimum acreage ({minimum_acres}). Gather comprehensive property data including
+    plot IDs, addresses, prices, lot sizes, zoning classifications, and listing URLs.
+    Handle API rate limits gracefully and ensure data quality by removing duplicates
+    and validating property information.
+  expected_output: 'A comprehensive list of available properties matching the search
+    criteria, with each property containing: plot_id, address, price, size_in_acres
+    (or size in sq.ft/sq.yd for India), zoning_classification, listing_url, and source
+    platform (Zillow/ATTOM/99acres). Include metadata about the search results such
+    as total properties found, API sources used, price trends (for Indian properties),
+    and any warnings or limitations encountered during data retrieval.'
+  agent: real_estate_data_researcher
+analyze_development_potential:
+  description: Analyze each property from the research results to assess development
+    potential and investment suitability. For every property, calculate composite
+    development scores based on location desirability, price-to-size ratio, zoning
+    advantages, and market trends. Generate AI-powered suitability summaries that
+    explain the pros and cons of each property for development purposes. Assess investment
+    risks and provide detailed analysis breakdowns including proximity to amenities,
+    transportation access, and growth potential in the {target_location} area.
+  expected_output: 'Enhanced property data with added analysis including: suitability_summary
+    (detailed explanation of development potential), development_score (0-100 rating),
+    risk_level (Low/Medium/High), and analysis_details (component scores, key factors,
+    recommendations). Each property should have a comprehensive assessment that helps
+    developers make informed investment decisions.'
+  agent: property_development_analyst
+  context:
+  - research_properties_data
+generate_api_response:
+  description: Create a production-ready RESTful JSON API response containing the
+    analyzed property data. Structure the response according to the specified requirements
+    with proper HTTP status codes, standardized error handling, and client-friendly
+    formatting. Organize the analyzed properties into a properly formatted array with
+    consistent field naming and data types. Include appropriate metadata such as search
+    parameters, result counts, timestamps, and any relevant warnings or limitations.
+    Ensure the response follows REST API best practices and is optimized for consumption
+    by client-side web applications.
+  expected_output: 'A complete RESTful JSON API response structure containing: 1)
+    HTTP status code and message 2) Array of analyzed properties with all required
+    fields (plot_id, address, price, size_in_acres, zoning_classification, listing_url,
+    suitability_summary) 3) Metadata including search parameters, total results, timestamp
+    4) Proper error handling structure for different failure scenarios (400, 429,
+    500) 5) Client-friendly formatting ready for immediate deployment in production
+    environments.'
+  agent: api_response_manager
+  context:
+  - analyze_development_potential
+collect_agent_information:
+  description: 'Systematically collect and aggregate information from the existing
+    Real Estate agents: Real Estate Data Researcher, Property Development Analyst,
+    and API Response Manager. Gather their outputs from the property research, analysis,
+    and API formatting tasks. Organize them in a structured format and create a consolidated
+    dataset that maintains the context and relationships between different pieces
+    of information.'
+  expected_output: 'A comprehensive data collection report containing: 1) Organized
+    information from real estate agents (research data, analysis results, API responses),
+    2) Data completeness assessment, 3) Cross-referenced findings and relationships,
+    4) Any data gaps or issues identified, 5) Structured dataset ready for client
+    presentation formatting.'
+  agent: information_collector
+  context:
+  - research_properties_data
+  - analyze_development_potential
+  - generate_api_response
+format_client_presentation:
+  description: Transform the collected information into a professional, client-ready
+    presentation. Create clear, well-structured reports that are appropriate for {client_type}
+    clients. Apply proper formatting, organize content logically, highlight key insights,
+    and ensure the presentation meets professional standards. Include executive summaries,
+    detailed findings, and actionable recommendations where applicable.
+  expected_output: 'A professional client presentation document containing: 1) Executive
+    summary with key highlights, 2) Well-organized main content sections, 3) Clear
+    visual hierarchy and professional formatting, 4) Actionable insights and recommendations,
+    5) Supporting data and evidence, 6) Client-friendly language and explanations,
+    7) Proper document structure for {client_type} audience.'
+  agent: client_presentation_specialist
+  context:
+  - collect_agent_information
+supervise_and_monitor_workflow:
+  description: Monitor the entire workflow from information collection through client
+    presentation. Verify that all agents have completed their tasks successfully,
+    inputs were processed correctly, and outputs meet quality standards. Identify
+    any operational issues, bottlenecks, or errors in the process. Generate workflow
+    status reports and alerting for any problems detected. Ensure the final deliverable
+    meets all requirements for {client_type} clients.
+  expected_output: 'A comprehensive workflow monitoring report including: 1) Status
+    of all agent tasks and operations, 2) Quality assessment of inputs and outputs,
+    3) Identification of any issues, errors, or bottlenecks, 4) Performance metrics
+    and timing analysis, 5) Alert summary for any problems detected, 6) Final quality
+    verification of client deliverable, 7) Recommendations for workflow improvements,
+    8) Overall system health assessment.'
+  agent: workflow_supervisor
+  context:
+  - collect_agent_information
+  - format_client_presentation

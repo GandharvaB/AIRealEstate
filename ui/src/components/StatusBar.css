@@ -1,0 +1,111 @@
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: 0;
+  border-top: 1px solid var(--glass-border);
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.statusbar-idle {
+  border-top-color: var(--glass-border);
+}
+
+.statusbar-running {
+  border-top-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 -2px 20px rgba(59, 130, 246, 0.1);
+}
+
+.statusbar-complete {
+  border-top-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 -2px 20px rgba(16, 185, 129, 0.1);
+}
+
+.statusbar-error {
+  border-top-color: rgba(244, 63, 94, 0.3);
+  box-shadow: 0 -2px 20px rgba(244, 63, 94, 0.1);
+}
+
+.statusbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.statusbar-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.statusbar-running .statusbar-icon-wrap {
+  color: var(--accent-blue);
+}
+
+.statusbar-complete .statusbar-icon-wrap {
+  color: var(--accent-emerald);
+}
+
+.statusbar-error .statusbar-icon-wrap {
+  color: var(--accent-rose);
+}
+
+.statusbar-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.statusbar-center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  max-width: 400px;
+  margin: 0 var(--space-xl);
+}
+
+.statusbar-progress {
+  flex: 1;
+}
+
+.statusbar-progress-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 36px;
+  text-align: right;
+}
+
+.statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.statusbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .statusbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .statusbar-center {
+    max-width: 200px;
+    margin: 0 var(--space-sm);
+  }
+}
