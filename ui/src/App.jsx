@@ -8,7 +8,7 @@ import LogStream from './components/LogStream';
 import StatusBar from './components/StatusBar';
 import './App.css';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.DEV ? 'http://localhost:8000' : '';
 
 const AGENT_ORDER = [
   'real_estate_data_researcher',
