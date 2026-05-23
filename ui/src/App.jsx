@@ -509,6 +509,11 @@ export default function App() {
         signal: AbortSignal.timeout(2000),
       });
       if (response.ok) {
+        const statusData = await response.json();
+        if (statusData.mode === 'demo') {
+          runDemoMode(inputs);
+          return;
+        }
         handleRealRun(inputs);
         return;
       }

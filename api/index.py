@@ -34,7 +34,7 @@ class SearchInput(BaseModel):
 
 @app.get("/api/status")
 async def health_check():
-    return {"status": "ok", "timestamp": datetime.now().isoformat()}
+    return {"status": "ok", "mode": "demo", "timestamp": datetime.now().isoformat()}
 
 
 @app.get("/api/agents")
