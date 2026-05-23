@@ -27,5 +27,5 @@ type = "crew"
 override-dependencies = ["litellm<=1.82.6"]
 
 [tool.vercel]
-entrypoint = "backend/api.py"
+entrypoint = "backend.api:app"
 
