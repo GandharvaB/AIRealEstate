@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd ui && npm install && npm run build"
+    "build": "cd ui && npm install && npm run build && cd .. && rm -rf public && cp -r ui/dist public"
   }
 }
