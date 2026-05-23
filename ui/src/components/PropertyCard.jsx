@@ -62,7 +62,7 @@ export default function PropertyCard({ property, index }) {
   const riskConfig = RISK_CONFIG[risk] || RISK_CONFIG.Medium;
   const RiskIcon = riskConfig.icon;
 
-  const isIndia = property.country === 'India' || (property.source || '').includes('99acres');
+  const isIndia = property.country === 'India' || (property.source || '').includes('99acres') || (property.source || '').includes('magicbricks');
 
   const formatPrice = (price) => {
     if (!price) return '—';
@@ -204,7 +204,12 @@ export default function PropertyCard({ property, index }) {
           rel="noopener noreferrer"
           className="property-link"
         >
-          {isIndia ? 'View on 99acres' : 'View Listing'} <ExternalLink size={12} />
+          {isIndia
+            ? (property.source || '').includes('magicbricks')
+              ? 'View on MagicBricks'
+              : 'View on 99acres'
+            : 'View Listing'}{' '}
+          <ExternalLink size={12} />
         </a>
       )}
     </motion.div>

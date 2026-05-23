@@ -54,7 +54,7 @@ export default function HeroBanner() {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <Zap size={14} />
-          <span>Powered by CrewAI + Sarvam AI + 99acres</span>
+          <span>Powered by CrewAI + Sarvam AI + 99acres + MagicBricks</span>
         </motion.div>
 
         <motion.h1

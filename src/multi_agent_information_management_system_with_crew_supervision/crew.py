@@ -11,9 +11,7 @@ from multi_agent_information_management_system_with_crew_supervision.tools.prope
 from multi_agent_information_management_system_with_crew_supervision.tools.sarvam_property_analysis import SarvamPropertyAnalysisTool
 from multi_agent_information_management_system_with_crew_supervision.tools.sarvam_api_response_generator import SarvamApiResponseGeneratorTool
 from multi_agent_information_management_system_with_crew_supervision.tools.ninetynine_acres_tool import NinetyNineAcresApiTool
-
-
-
+from multi_agent_information_management_system_with_crew_supervision.tools.magicbricks_tool import MagicBricksApiTool
 
 
 @CrewBase
@@ -29,7 +27,7 @@ class MultiAgentInformationManagementSystemWithCrewSupervisionCrew:
             config=self.agents_config["real_estate_data_researcher"],
             
             
-            tools=[				RealEstateApiTool(), NinetyNineAcresApiTool()],
+            tools=[RealEstateApiTool(), NinetyNineAcresApiTool(), MagicBricksApiTool()],
             reasoning=False,
             max_reasoning_attempts=None,
             inject_date=True,

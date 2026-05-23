@@ -8,7 +8,7 @@ const AGENTS = [
     id: 'real_estate_data_researcher',
     name: 'Data Researcher',
     role: 'Real Estate Data Researcher',
-    tools: ['RealEstateApiTool', '99acresIndiaTool'],
+    tools: ['RealEstateApiTool', '99acresIndiaTool', 'MagicBricksIndiaTool'],
     icon: '🔍',
     color: '#3b82f6',
     description: 'Searches US & India APIs for listings',

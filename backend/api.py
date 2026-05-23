@@ -139,7 +139,7 @@ async def get_agents():
                 "id": "real_estate_data_researcher",
                 "name": "Data Researcher",
                 "role": "Real Estate Data Researcher",
-                "tools": ["RealEstateApiTool"],
+                "tools": ["RealEstateApiTool", "99acresIndiaTool", "MagicBricksIndiaTool"],
                 "color": "#3b82f6",
             },
             {
